@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Basic Operation </title>
+    
+    <style>
+
+    </style>
+
+</head>
+<body>
+    
+    <h1> Count: <span id = "cntID"> </span></h1>
+    <input type="text" id = "inputID" oninput="Calculation()" placeholder="write input here"> <br> <br>
+    <button id = "incID" onclick="Increment()"> Increment </button>
+    <button id = "decID" onclick="Decrement()"> Decrement </button>
+
+    <script>
+        let count = NaN;
+       
+        const isNumber = (str) => {
+            for (let i = 0; i < str.length; ++i) {
+                if (str[i] < '0' || str[i] > '9') {
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        const Calculation = () => {
+            
+            let getValue = document.getElementById("inputID").value;
+            let getNumber = parseInt(getValue);
+
+            if (getValue.length === 0) {
+                document.getElementById("cntID").innerText = "";
+                count = NaN;
+            }
+
+            else if (!isNumber(getValue)) {
+                document.getElementById("cntID").innerText = NaN;
+                count = NaN;
+                alert("Please provide a valid number...");
+            }
+
+            else if (isNumber(getValue)) {
+                count = getNumber;
+                document.getElementById("cntID").innerText = count;
+            }
+            
+        }
+
+        const Increment = () => {
+            if (count === NaN) {
+                document.getElementById("cntID").innerText = "";
+            } else {
+                count = count + 1;
+                document.getElementById("cntID").innerText = count;
+            }
+        }
+
+        const Decrement = () => {
+            if (count === NaN) {
+                document.getElementById("cntID").innerText = "";
+            } else {
+                count = count - 1;
+                document.getElementById("cntID").innerText = count;
+            }
+        }
+    </script>
+</body>
+</html>
